@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfBiomEtec.WinMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBiomEtec"
+        mc:Ignorable="d"
+        Title="Menu - BiomEtec" Height="1024" Width="1440">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF2030A4" Offset="1"/>
+                <GradientStop Color="#FF0C123E" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Rectangle HorizontalAlignment="Left" Height="582" Margin="960,426,0,0" VerticalAlignment="Top" Width="480" Fill="White"/>
+        <Rectangle HorizontalAlignment="Left" Height="426" Margin="960,0,0,0" VerticalAlignment="Top" Width="480" Fill="#FFCFCFCF"/>
+        <Label Content="Cadastro" HorizontalAlignment="Left" Height="55" Margin="1101,99,0,0" VerticalAlignment="Top" Width="198" Foreground="#FF0C123E" FontSize="45" FontFamily="Arial"/>
+        <Button x:Name="btnCadrep" Content="Responsaveis" HorizontalAlignment="Left" Height="73" Margin="1091,186,0,0" VerticalAlignment="Top" Width="208" FontFamily="Arial" FontSize="20" Foreground="White" Background="#FF0C123E" BorderBrush="{x:Null}" Click="btnCadrep_Click"/>
+        <Button x:Name="btnCadaluno" Content="Alunos" HorizontalAlignment="Left" Height="73" Margin="1091,286,0,0" VerticalAlignment="Top" Width="208" BorderBrush="{x:Null}" Foreground="White" Background="#FF0C123E" FontFamily="Arial" FontSize="20" Click="btnCadaluno_Click"/>
+        <Label Content="Presenças" HorizontalAlignment="Left" Height="55" Margin="1101,458,0,0" VerticalAlignment="Top" Width="198" Foreground="#FF0C123E" FontSize="45" FontFamily="Arial"/>
+        <Button x:Name="btnDS" Content="DS" HorizontalAlignment="Left" Height="73" Margin="1091,565,0,0" VerticalAlignment="Top" Width="208" FontFamily="Arial" FontSize="20" Foreground="White" Background="#FF0C123E" BorderBrush="{x:Null}" Click="btnDS_Click"/>
+        <Button x:Name="btnMA" Content="MA" HorizontalAlignment="Left" Height="72" Margin="1091,668,0,0" VerticalAlignment="Top" Width="208" BorderBrush="{x:Null}" Foreground="White" Background="#FF0C123E" FontFamily="Arial" FontSize="20" Click="btnMA_Click"/>
+        <Button x:Name="btnMN" Content="MN" HorizontalAlignment="Left" Height="73" Margin="1091,762,0,0" VerticalAlignment="Top" Width="208" BorderBrush="{x:Null}" Foreground="White" Background="#FF0C123E" FontFamily="Arial" FontSize="20" Click="btnMN_Click"/>
+        <Label x:Name="lblLogoff" Content="Logoff" HorizontalAlignment="Left" Height="39" Margin="1166,959,0,0" VerticalAlignment="Top" Width="68" Foreground="#FF2030A4" FontFamily="Arial" FontSize="18" />
+        <Rectangle HorizontalAlignment="Left" Height="864" Margin="80,80,0,0" VerticalAlignment="Top" Width="800" Fill="#FFCFCFCF" RadiusX="15" RadiusY="15"/>
+        <Rectangle HorizontalAlignment="Left" Height="93" Margin="80,80,0,0" VerticalAlignment="Top" Width="800" Fill="#FFD3DAF1" RadiusX="15" RadiusY="15"/>
+        <Label Content="Notificações" HorizontalAlignment="Left" Height="55" Margin="350,99,0,0" VerticalAlignment="Top" Width="260" Foreground="#FF0C123E" FontSize="45" FontFamily="Arial"/>
+        <StackPanel x:Name="NotificationPanel" HorizontalAlignment="Left" Height="766" Margin="80,178,0,0" VerticalAlignment="Top" Width="800"/>
+
+    </Grid>
+</Window>

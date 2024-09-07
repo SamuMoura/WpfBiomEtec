@@ -108,6 +108,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Aluno.cs" />
+    <Compile Include="Cadastro.cs" />
+    <Compile Include="CadastroAluno.cs" />
+    <Compile Include="CadastroResp.cs" />
     <Compile Include="ConnectionFactory.cs" />
     <Compile Include="InsertAlunoDAO.cs" />
     <Compile Include="InsertRespDAO.cs" />

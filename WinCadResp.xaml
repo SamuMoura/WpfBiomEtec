@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
-        Title="WinCadResp" Height="450" Width="800">
+        Title="WinCadResp" Height="1024" Width="1440">
     <Grid>
-        
+        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Height="80" Margin="80,850,0,0" VerticalAlignment="Top" Width="300" Click="btnCadastrar_Click" FontSize="24" FontFamily="Arial" Background="#FF060322" BorderBrush="White" Foreground="White"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Height="80" Margin="1000,850,0,0" VerticalAlignment="Top" Width="300" Click="btnVoltar_Click" Foreground="#FF060322" BorderBrush="#FF060322" Background="#FFD3DAF1" FontSize="22" FontFamily="Arial"/>
+        <TextBox x:Name="txtRelacionamentocAluno" HorizontalAlignment="Left" Height="60" Margin="80,711,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="700" Background="#FFD3DAF1" FontSize="36" Text="Relacionamento c/ Aluno"/>
+        <TextBox x:Name="txtIDbiometria" HorizontalAlignment="Left" Height="60" Margin="80,186,0,0" TextWrapping="Wrap" Text="ID Biometria" VerticalAlignment="Top" Width="700" Background="#FFD3DAF1" FontSize="36" Foreground="#FF060322" FontFamily="Arial"/>
+        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="60" Margin="80,291,0,0" TextWrapping="Wrap" Text="Nome" VerticalAlignment="Top" Width="700" Background="#FFD3DAF1" FontSize="36"/>
+        <TextBox x:Name="txtCPF" HorizontalAlignment="Left" Height="60" Margin="80,396,0,0" TextWrapping="Wrap" Text="CPF" VerticalAlignment="Top" Width="700" Background="#FFD3DAF1" FontSize="36"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="60" Margin="80,501,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="700" Background="#FFD3DAF1" FontSize="36"/>
+        <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" Height="60" Margin="80,606,0,0" TextWrapping="Wrap" Text="Telefone" VerticalAlignment="Top" Width="700" Background="#FFD3DAF1" FontSize="36"/>
+        <Label Content="Cadastro - Responsáveis" HorizontalAlignment="Left" Height="89" Margin="68,55,0,0" VerticalAlignment="Top" Width="866" FontFamily="Arial" FontSize="72" Foreground="#FF060322"/>
     </Grid>
 </Window>

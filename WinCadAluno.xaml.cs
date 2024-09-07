@@ -26,12 +26,19 @@ namespace WpfBiomEtec
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
+            CadastroAluno Alunocadastrar = new CadastroAluno(Convert.ToString(txtNumConta.Text), Convert.ToInt32(txtDigconta.Text),
+                Convert.ToDouble(txtSaldo.Text), txtSenha.Text, Convert.ToDouble(txtLimite.Text), txtTitutar.Text, txtCPF.Text);
 
+            InsertAlunoDAO.InserirAluno(Alunocadastrar);
+            MessageBox.Show("Aluno cadastrado com sucesso!");
+            LimparForm();
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {
-
+            WinMenu winMenu = new WinMenu();
+            winMenu.Show();
+            this.Close();
         }
     }
 }

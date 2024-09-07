@@ -19,9 +19,40 @@ namespace WpfBiomEtec
     /// </summary>
     public partial class WinCadResp : Window
     {
+        public void LimparForm()
+        {
+            txtCPF.Clear();
+            txtNome.Clear();
+            txtEmail.Clear();
+            txtIDbiometria.Clear();
+            txtRelacionamentocAluno.Clear();
+            txtTelefone.Clear();
+        }
         public WinCadResp()
         {
             InitializeComponent();
+        }
+
+        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            CadastroResp CadastroRespcadastrar = new CadastroResp(
+                txtCPF.Text, 
+                txtNome.Text,
+                txtEmail.Text, 
+                txtNome.Text,
+                txtTelefone.Text
+                );
+
+            InsertRespDAO.InserirResp(CadastroRespcadastrar);
+            MessageBox.Show("Responsável cadastrado com sucesso!");
+            LimparForm();
+        }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            WinMenu winMenu = new WinMenu();
+            winMenu.Show();
+            this.Close();
         }
     }
 }

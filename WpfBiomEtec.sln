@@ -5,6 +5,11 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBiomEtec", "WpfBiomEtec.csproj", "{417E1BBB-8944-4C33-96E6-D58EDD9965D6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{E348520B-8285-4ACF-BC8A-8AC17352F1E4}"
+	ProjectSection(SolutionItems) = preProject
+		Cadastro.cs = Cadastro.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

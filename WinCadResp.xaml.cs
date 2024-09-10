@@ -35,7 +35,7 @@ namespace WpfBiomEtec
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            CadastroResp CadastroRespcadastrar = new CadastroResp(
+            CadastroResp Respcadastrar = new CadastroResp(
                 txtCPF.Text, 
                 txtNome.Text,
                 txtEmail.Text, 
@@ -43,7 +43,7 @@ namespace WpfBiomEtec
                 txtTelefone.Text
                 );
 
-            InsertRespDAO.InserirResp(CadastroRespcadastrar);
+            InsertRespDAO.InserirResp(Respcadastrar);
             MessageBox.Show("Responsável cadastrado com sucesso!");
             LimparForm();
         }

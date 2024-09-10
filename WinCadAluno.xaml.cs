@@ -19,6 +19,15 @@ namespace WpfBiomEtec
     /// </summary>
     public partial class WinCadAluno : Window
     {
+        public void LimparForm()
+        {
+            txtCPF.Clear();
+            txtNome.Clear();
+            txtEmail.Clear();
+            txtIDbiometria.Clear();
+            txtRM.Clear();
+            txtTelefone.Clear();
+        }
         public WinCadAluno()
         {
             InitializeComponent();
@@ -26,8 +35,13 @@ namespace WpfBiomEtec
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            CadastroAluno Alunocadastrar = new CadastroAluno(Convert.ToString(txtNumConta.Text), Convert.ToInt32(txtDigconta.Text),
-                Convert.ToDouble(txtSaldo.Text), txtSenha.Text, Convert.ToDouble(txtLimite.Text), txtTitutar.Text, txtCPF.Text);
+            CadastroAluno Alunocadastrar = new CadastroAluno(
+                    Convert.ToString(txtCPF),
+                    Convert.ToString(txtEmail),
+                    Convert.ToString(txtIDbiometria),
+                    Convert.ToString(txtNome),
+                    Convert.ToString(txtTelefone)
+                );
 
             InsertAlunoDAO.InserirAluno(Alunocadastrar);
             MessageBox.Show("Aluno cadastrado com sucesso!");

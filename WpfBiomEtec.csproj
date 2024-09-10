@@ -103,75 +103,68 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Windows\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Aluno.cs" />
-    <Compile Include="Cadastro.cs" />
-    <Compile Include="CadastroAluno.cs" />
-    <Compile Include="CadastroResp.cs" />
-    <Compile Include="ConnectionFactory.cs" />
-    <Compile Include="InsertAlunoDAO.cs" />
-    <Compile Include="InsertRespDAO.cs" />
-    <Compile Include="WinCadAluno.xaml.cs">
+    <Compile Include="Classes C#\Aluno.cs" />
+    <Compile Include="Classes C#\Cadastro.cs" />
+    <Compile Include="Classes C#\CadastroAluno.cs" />
+    <Compile Include="Classes C#\CadastroResp.cs" />
+    <Compile Include="Classes C#\ConnectionFactory.cs" />
+    <Compile Include="Classes C#\InsertAlunoDAO.cs" />
+    <Compile Include="Classes C#\InsertRespDAO.cs" />
+    <Compile Include="Windows\WinCadAluno.xaml.cs">
       <DependentUpon>WinCadAluno.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WinCadResp.xaml.cs">
+    <Compile Include="Windows\WinCadResp.xaml.cs">
       <DependentUpon>WinCadResp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WinCadUsuario.xaml.cs">
+    <Compile Include="Windows\WinCadUsuario.xaml.cs">
       <DependentUpon>WinCadUsuario.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WinDS.xaml.cs">
-      <DependentUpon>WinDS.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WinMA.xaml.cs">
+    <Compile Include="Windows\WinMA.xaml.cs">
       <DependentUpon>WinMA.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WinMenu.xaml.cs">
+    <Compile Include="Windows\WinMenu.xaml.cs">
       <DependentUpon>WinMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WinMN.xaml.cs">
+    <Compile Include="Windows\WinMN.xaml.cs">
       <DependentUpon>WinMN.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Windows\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="WinCadAluno.xaml">
+    <Page Include="Windows\WinCadAluno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WinCadResp.xaml">
+    <Page Include="Windows\WinCadResp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WinCadUsuario.xaml">
+    <Page Include="Windows\WinCadUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WinDS.xaml">
+    <Page Include="Windows\WinMA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WinMA.xaml">
+    <Page Include="Windows\WinMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WinMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WinMN.xaml">
+    <Page Include="Windows\WinMN.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,7 +198,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BiomEtec.png" />
+    <Resource Include="assets\BiomEtec.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

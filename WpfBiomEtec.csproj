@@ -132,6 +132,9 @@
     <Compile Include="Windows\WinMN.xaml.cs">
       <DependentUpon>WinMN.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WinDS.xaml.cs">
+      <DependentUpon>WinDS.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\WinMN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WinDS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

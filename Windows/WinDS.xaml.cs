@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WpfBiomEtec
 {
     /// <summary>
-    /// Lógica interna para WinMN.xaml
+    /// Lógica interna para WinDS.xaml
     /// </summary>
-    public partial class WinMN : Window
+    public partial class WinDS : Window
     {
-        public WinMN()
+        public WinDS()
         {
             InitializeComponent();
         }

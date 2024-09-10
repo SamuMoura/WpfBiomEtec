@@ -23,5 +23,12 @@ namespace WpfBiomEtec
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WinMenu winMenu = new WinMenu();
+            winMenu.Show();
+            this.Close();
+        }
     }
 }

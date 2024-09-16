@@ -6,7 +6,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
-        Title="Presenças" Height="600" Width="900">
+        Title="Presenças - MN" Height="600" Width="900">
 
     <Grid Background="LightGray" Margin="10">
         <Grid.RowDefinitions>
@@ -17,10 +17,9 @@
 
         <!-- Title -->
         <TextBlock Text="Presença - MN"
-            FontSize="50" HorizontalAlignment="Center"
-            Margin="0,20,0,20" 
-            Grid.Row="0"
-        />
+                   FontSize="50" HorizontalAlignment="Center"
+                   Margin="0,20,0,20" 
+                   Grid.Row="0" />
 
         <!-- Content -->
         <Grid Margin="21,87,21,20" Grid.RowSpan="2">
@@ -33,8 +32,8 @@
             <Grid Margin="100,55,101,55">
                 <lvc:PieChart Name="doughnutChart" InnerRadius="50">
                     <lvc:PieChart.Series>
-                        <lvc:PieSeries Title="Presentes" Values="{Binding Presentes}" DataLabels="True"/>
-                        <lvc:PieSeries Title="Ausentes" Values="{Binding Ausentes}" DataLabels="True"/>
+                        <lvc:PieSeries Title="Presentes" Values="{Binding Dados[0].Values}" DataLabels="True"/>
+                        <lvc:PieSeries Title="Ausentes" Values="{Binding Dados[1].Values}" DataLabels="True"/>
                     </lvc:PieChart.Series>
                 </lvc:PieChart>
             </Grid>
@@ -42,7 +41,7 @@
             <!-- Gauges -->
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="102,0,0,0">
                 <!-- Gauge para Sala 1 -->
-                <lvc:Gauge From="0" To="40" Value="{Binding Sala1Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0" Loaded="Gauge_Loaded">
+                <lvc:Gauge From="0" To="40" Value="{Binding Sala1Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0">
                     <lvc:Gauge.GaugeActiveFill>
                         <LinearGradientBrush>
                             <GradientStop Color="Yellow" Offset="0.0" />
@@ -67,18 +66,26 @@
                 <lvc:Gauge From="0" To="40" Value="{Binding Sala3Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125">
                     <lvc:Gauge.GaugeActiveFill>
                         <LinearGradientBrush>
-                            <GradientStop Color="Yellow" Offset="0.0" />
-                            <GradientStop Color="Orange" Offset="0.5" />
-                            <GradientStop Color="Red" Offset="1.0" />
+                            <GradientStop Color="LightBlue" Offset="0.0" />
+                            <GradientStop Color="Blue" Offset="0.5" />
+                            <GradientStop Color="DarkBlue" Offset="1.0" />
                         </LinearGradientBrush>
                     </lvc:Gauge.GaugeActiveFill>
                 </lvc:Gauge>
             </StackPanel>
 
             <!-- TextBlock placeholders -->
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,144,0,293" Grid.Row="0" Grid.Column="1" Width="28" Height="20" RenderTransformOrigin="0.671,-2.694"><Run Language="pt-br" Text="1°MN"/></TextBlock>
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,275,0,162" Grid.Row="0" Grid.Column="1" Width="28" Height="20"><Run Language="pt-br" Text="2°MN"/></TextBlock>
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,396,0,41" Grid.Row="0" Grid.Column="1" Width="28" Height="20"><Run Text="3"/><Run Language="pt-br" Text="°"/><Run Text="MN"/></TextBlock>
+            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,144,0,293" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
+                <Run Language="pt-br" Text="1°MN"/>
+            </TextBlock>
+            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,275,0,162" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
+                <Run Language="pt-br" Text="2°MN"/>
+            </TextBlock>
+            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,396,0,41" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
+                <Run Text="3"/>
+                <Run Language="pt-br" Text="°"/>
+                <Run Text="MN"/>
+            </TextBlock>
         </Grid>
 
         <!-- Back Button -->

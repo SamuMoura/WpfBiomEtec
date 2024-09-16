@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Remoting.Messaging;
 using System.Windows;
 using LiveCharts;
 using LiveCharts.Defaults;
@@ -13,8 +12,7 @@ namespace WpfBiomEtec
         public int Sala1Presenca { get; set; }
         public int Sala2Presenca { get; set; }
         public int Sala3Presenca { get; set; }
-        public SeriesCollection Presentes { get; set; }
-        public SeriesCollection Ausentes { get; set; }
+        public SeriesCollection Dados { get; set; }
 
         public WinMN()
         {
@@ -25,100 +23,66 @@ namespace WpfBiomEtec
 
         private void LoadDataFromDatabase()
         {
-            using (MySqlConnection conn = ConnectionFactory.GetConnection())
+            using (MySqlConnection connection = ConnectionFactory.GetConnection())
             {
                 try
                 {
-                    conn.Open();
+                    connection.Open();
 
-                    // Consulta SQL para buscar presentes e ausentes para cada sala
-                    string query = @"
-                        SELECT 
-                            (SELECT COUNT(*) FROM alunos WHERE sala = 1 AND status = 'presente') AS Sala1Presentes,
-                            (SELECT COUNT(*) FROM alunos WHERE sala = 1 AND status = 'ausente') AS Sala1Ausentes,
-                            (SELECT COUNT(*) FROM alunos WHERE sala = 2 AND status = 'presente') AS Sala2Presentes,
-                            (SELECT COUNT(*) FROM alunos WHERE sala = 2 AND status = 'ausente') AS Sala2Ausentes,
-                            (SELECT COUNT(*) FROM alunos WHERE sala = 3 AND status = 'presente') AS Sala3Presentes,
-                            (SELECT COUNT(*) FROM alunos WHERE sala = 3 AND status = 'ausente') AS Sala3Ausentes";
+                    // Consulta SQL para contar presenças em todas as turmas
+                    string queryTotalPresentes = @"SELECT COUNT(*) FROM relatorio_presencas_turma WHERE turma IN ('1MN', '2MN', '3MN')";
 
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    MySqlDataReader reader = cmd.ExecuteReader();
+                    // Consulta SQL para contar presenças por turma individualmente
+                    string querySala1Presentes = @"SELECT COUNT(*) FROM relatorio_presencas_turma WHERE turma = '1MN'";
 
-                    if (reader.Read())
+                    string querySala2Presentes = @"SELECT COUNT(*) FROM relatorio_presencas_turma WHERE turma = '2MN'";
+
+                    string querySala3Presentes = @"SELECT COUNT(*) FROM relatorio_presencas_turma WHERE turma = '3MN'";
+
+                    MySqlCommand cmdTotal = new MySqlCommand(queryTotalPresentes, connection);
+                    MySqlCommand cmdSala1 = new MySqlCommand(querySala1Presentes, connection);
+                    MySqlCommand cmdSala2 = new MySqlCommand(querySala2Presentes, connection);
+                    MySqlCommand cmdSala3 = new MySqlCommand(querySala3Presentes, connection);
+
+                    // Executar as consultas
+                    int totalPresentes = Convert.ToInt32(cmdTotal.ExecuteScalar());
+                    int sala1Presentes = Convert.ToInt32(cmdSala1.ExecuteScalar());
+                    int sala2Presentes = Convert.ToInt32(cmdSala2.ExecuteScalar());
+                    int sala3Presentes = Convert.ToInt32(cmdSala3.ExecuteScalar());
+
+                    // Atualizar o gráfico de doughnut
+                    Dados = new SeriesCollection {
+                    new PieSeries
                     {
-                        int sala1Presentes = reader.GetInt32("Sala1Presentes");
-                        int sala2Presentes = reader.GetInt32("Sala2Presentes");
-                        int sala3Presentes = reader.GetInt32("Sala3Presentes");
-
-                        UpdateChart(sala1Presentes, sala2Presentes, sala3Presentes);
+                        Title = "Total de Presentes",
+                        Values = new ChartValues<int> { totalPresentes },
+                        DataLabels = true,
+                        Fill = System.Windows.Media.Brushes.LightGreen
+                    },
+                    new PieSeries
+                    {
+                        Title = "Ausentes",
+                        Values = new ChartValues<int> { 120 - totalPresentes }, // Subtrai o total dos alunos presentes, resultando nos ausentes 
+                        DataLabels = true,
+                        Fill = System.Windows.Media.Brushes.OrangeRed
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro ao conectar ao banco de dados: {ex.Message}");
-                }
+                };
+
+                    // Atualizar o DataContext para refletir as mudanças
+                    Sala1Presenca = sala1Presentes;
+                    Sala2Presenca = sala2Presentes;
+                    Sala3Presenca = sala3Presentes;
+
+                    DataContext = null;
+                    DataContext = this;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao conectar ao banco de dados: {ex.Message}");
             }
         }
+    }
 
-        private void UpdateChart(int sala1Presentes, int sala2Presentes, int sala3Presentes)
-        {
-            // Supondo que o valor máximo para o gauge de presença seja 40
-            int maxPresenca = 40;
-
-            // Se o valor de presentes for maior que 40, limite o valor
-            Sala1Presenca = sala1Presentes > maxPresenca ? maxPresenca : sala1Presentes;
-            Sala2Presenca = sala2Presentes > maxPresenca ? maxPresenca : sala2Presentes;
-            Sala3Presenca = sala3Presentes > maxPresenca ? maxPresenca : sala3Presentes;
-
-            // Atualizar o gráfico de doughnut
-            Presentes = new SeriesCollection
-            {
-                new PieSeries
-                {
-                    Title = "Sala 1 Presentes",
-                    Values = new ChartValues<int> { sala1Presentes },
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "Sala 2 Presentes",
-                    Values = new ChartValues<int> { sala2Presentes },
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "Sala 3 Presentes",
-                    Values = new ChartValues<int> { sala3Presentes },
-                    DataLabels = true
-                }
-            };
-
-            Ausentes = new SeriesCollection
-            {
-                new PieSeries
-                {
-                    Title = "Sala 1 Ausentes",
-                    Values = new ChartValues<int> { reader.GetInt32("Sala1Ausentes") },
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "Sala 2 Ausentes",
-                    Values = new ChartValues<int> { reader.GetInt32("Sala2Ausentes") },
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "Sala 3 Ausentes",
-                    Values = new ChartValues<int> { reader.GetInt32("Sala3Ausentes") },
-                    DataLabels = true
-                }
-            };
-
-            // Atualizar o DataContext para refletir as mudanças
-            DataContext = null;
-            DataContext = this;
-        }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {

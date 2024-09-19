@@ -4,6 +4,73 @@
              xmlns:local="clr-namespace:WpfBiomEtec"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="#D9D9D9"/>
+            <Setter Property="Background" Value="#D9D9D9"/>
+
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="20" 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="2">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#D3DAF1"/>
+            <Setter Property="BorderBrush" Value="#0C123E"/>
+            <Setter Property="Foreground" Value="#0C123E"/>
+            <Setter Property="BorderThickness" Value="15"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border CornerRadius="20" 
+                      Background="{TemplateBinding Background}" 
+                      BorderBrush="{TemplateBinding BorderBrush}" 
+                      BorderThickness="2">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#D3DAF1"/>
+            <Setter Property="BorderBrush" Value="#0C123E"/>
+            <Setter Property="Foreground" Value="#0C123E"/>
+            <Setter Property="BorderThickness" Value="15"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" 
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#0C123E"/>
+            <Setter Property="BorderBrush" Value="#D3DAF1"/>
+            <Setter Property="Foreground" Value="#D3DAF1"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Padding" Value="15"/>
+        </Style>
+
     </Application.Resources>
 </Application>

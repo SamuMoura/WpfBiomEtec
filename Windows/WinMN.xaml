@@ -30,11 +30,23 @@
 
             <!-- Doughnut Chart -->
             <Grid Margin="100,55,101,55">
-                <lvc:PieChart Name="doughnutChart" InnerRadius="50">
-                    <lvc:PieChart.Series>
-                        <lvc:PieSeries Title="Presentes" Values="{Binding Dados[0].Values}" DataLabels="True"/>
-                        <lvc:PieSeries Title="Ausentes" Values="{Binding Dados[1].Values}" DataLabels="True"/>
-                    </lvc:PieChart.Series>
+                <lvc:PieChart 
+                    Name="Doughnut"
+                    Grid.Row="1"
+                    Series="{Binding Dados}"
+                    LegendLocation="Right"
+                    InnerRadius="70"
+                    Margin="0 15"
+                    DataClick="PieChart_DataClick">
+
+                    <lvc:PieChart.ChartLegend>
+                        <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+                    </lvc:PieChart.ChartLegend>
+
+                    <lvc:PieChart.DataTooltip>
+                        <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
+                    </lvc:PieChart.DataTooltip>
+
                 </lvc:PieChart>
             </Grid>
 
@@ -44,9 +56,9 @@
                 <lvc:Gauge From="0" To="40" Value="{Binding Sala1Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0">
                     <lvc:Gauge.GaugeActiveFill>
                         <LinearGradientBrush>
-                            <GradientStop Color="Yellow" Offset="0.0" />
-                            <GradientStop Color="Orange" Offset="0.5" />
-                            <GradientStop Color="Red" Offset="1.0" />
+                            <GradientStop Color="LightBlue" Offset="0.0" />
+                            <GradientStop Color="Blue" Offset="0.5" />
+                            <GradientStop Color="DarkBlue" Offset="1.0" />
                         </LinearGradientBrush>
                     </lvc:Gauge.GaugeActiveFill>
                 </lvc:Gauge>
@@ -55,9 +67,9 @@
                 <lvc:Gauge From="0" To="40" Value="{Binding Sala2Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0">
                     <lvc:Gauge.GaugeActiveFill>
                         <LinearGradientBrush>
-                            <GradientStop Color="Yellow" Offset="0.0" />
-                            <GradientStop Color="Orange" Offset="0.5" />
-                            <GradientStop Color="Red" Offset="1.0" />
+                            <GradientStop Color="LightBlue" Offset="0.0" />
+                            <GradientStop Color="Blue" Offset="0.5" />
+                            <GradientStop Color="DarkBlue" Offset="1.0" />
                         </LinearGradientBrush>
                     </lvc:Gauge.GaugeActiveFill>
                 </lvc:Gauge>

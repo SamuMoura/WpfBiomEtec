@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,10 +47,15 @@ namespace WpfBiomEtec
             {
                 try
                 {
-                    connection.Open();
+                    if (connection.State != ConnectionState.Open)
+                    {
+                        connection.Open();
+                    }
+
 
                     if (VerificarUsuario(userAdm, userSenha))
                     {
+                        connection.Close();
                         WinMenu winMenu = new WinMenu();
                         winMenu.Show();
                         this.Close();
@@ -62,8 +68,14 @@ namespace WpfBiomEtec
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Erro: {ex.Message}");
+                    connection.Close();
+
                 }
+                connection.Close();
+
             }
+
+
         }
 
         private bool VerificarUsuario(string userAdm, string userSenha)
@@ -72,7 +84,11 @@ namespace WpfBiomEtec
 
             using (var connection = ConnectionFactory.GetConnection())
             {
-                connection.Open();
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
 
                 var query = "SELECT COUNT(*) FROM usuario WHERE usuario = @userAdm AND senha = @userSenha";
 

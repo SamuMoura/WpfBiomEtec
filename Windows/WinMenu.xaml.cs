@@ -38,6 +38,13 @@ namespace WpfBiomEtec
             this.Close();
         }
 
+        private void btnCadusuario_Click(object sender, RoutedEventArgs e)
+        {
+            WinCadUsuario winCadUsuario = new WinCadUsuario();
+            winCadUsuario.Show();
+            this.Close();
+        }
+
         private void btnDS_Click(object sender, RoutedEventArgs e)
         {
             WinDS winDS = new WinDS();
@@ -59,6 +66,13 @@ namespace WpfBiomEtec
             this.Close();
         }
 
+        private void lblLogoff_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
         public void AddNotification(string message)
         {
             TextBlock notification = new TextBlock
@@ -71,5 +85,7 @@ namespace WpfBiomEtec
 
             NotificationPanel.Children.Add(notification);
         }
+
     }
+
 }

@@ -21,7 +21,7 @@ namespace WpfBiomEtec
             this.Email = email;
             this.Telefone = telefone;
 
-            this.rm = RM;
+            this.RM = rm;
         }
 
         public CadastroAluno() { }

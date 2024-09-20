@@ -117,9 +117,11 @@
     <Compile Include="Classes C#\Cadastro.cs" />
     <Compile Include="Classes C#\CadastroAluno.cs" />
     <Compile Include="Classes C#\CadastroResp.cs" />
+    <Compile Include="Classes C#\CadastroUsuario.cs" />
     <Compile Include="Classes C#\ConnectionFactory.cs" />
     <Compile Include="Classes C#\InsertAlunoDAO.cs" />
     <Compile Include="Classes C#\InsertRespDAO.cs" />
+    <Compile Include="Classes C#\InsertUsuarioDAO.cs" />
     <Compile Include="Windows\WinCadAluno.xaml.cs">
       <DependentUpon>WinCadAluno.xaml</DependentUpon>
     </Compile>
@@ -212,6 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\BiomEtec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\Fiveicon - BiomEtec.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

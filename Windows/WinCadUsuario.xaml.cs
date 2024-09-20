@@ -19,9 +19,35 @@ namespace WpfBiomEtec
     /// </summary>
     public partial class WinCadUsuario : Window
     {
+        public void LimparForm()
+        {
+            txtUsuario.Clear();
+            txtSenha.Clear();
+            txtPermissao.Clear();
+        }
         public WinCadUsuario()
         {
             InitializeComponent();
+        }
+
+        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            CadastroUsuario Usercadastrar = new CadastroUsuario(
+                txtUsuario.Text,
+                txtSenha.Text,
+                txtPermissao.Text
+                );
+
+            InsertUsuarioDAO.InserirUsuario(Usercadastrar);
+            MessageBox.Show("Responsável cadastrado com sucesso!");
+            LimparForm();
+        }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            WinMenu winMenu = new WinMenu();
+            winMenu.Show();
+            this.Close();
         }
     }
 }

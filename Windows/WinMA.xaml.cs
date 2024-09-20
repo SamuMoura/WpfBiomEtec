@@ -47,17 +47,17 @@ namespace WpfBiomEtec
                     MySqlCommand cmdSala1 = new MySqlCommand(querySala1Presentes, connection);
                     MySqlCommand cmdSala2 = new MySqlCommand(querySala2Presentes, connection);
                     MySqlCommand cmdSala3 = new MySqlCommand(querySala3Presentes, connection);
-                    MySqlCommand cmdSala4 = new MySqlCommand(querySala1Presentes, connection);
-                    MySqlCommand cmdSala5 = new MySqlCommand(querySala2Presentes, connection);
-                    MySqlCommand cmdSala6 = new MySqlCommand(querySala3Presentes, connection);
+                    MySqlCommand cmdSala4 = new MySqlCommand(querySala4Presentes, connection);
+                    MySqlCommand cmdSala5 = new MySqlCommand(querySala5Presentes, connection);
+                    MySqlCommand cmdSala6 = new MySqlCommand(querySala6Presentes, connection);
 
                     // Executar as consultas
                     Sala1Presenca = Convert.ToInt32(cmdSala1.ExecuteScalar());
                     Sala2Presenca = Convert.ToInt32(cmdSala2.ExecuteScalar());
                     Sala3Presenca = Convert.ToInt32(cmdSala3.ExecuteScalar());
-                    Sala4Presenca = Convert.ToInt32(cmdSala1.ExecuteScalar());
-                    Sala5Presenca = Convert.ToInt32(cmdSala2.ExecuteScalar());
-                    Sala6Presenca = Convert.ToInt32(cmdSala3.ExecuteScalar());
+                    Sala4Presenca = Convert.ToInt32(cmdSala4.ExecuteScalar());
+                    Sala5Presenca = Convert.ToInt32(cmdSala5.ExecuteScalar());
+                    Sala6Presenca = Convert.ToInt32(cmdSala6.ExecuteScalar());
 
                     // Calcula o total de presentes somando os valores das três salas
                     int totalPresentes = Sala1Presenca + Sala2Presenca + Sala3Presenca + Sala4Presenca + Sala5Presenca + Sala6Presenca;

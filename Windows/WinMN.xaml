@@ -6,9 +6,10 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
+        Icon="/assets/Fiveicon - BiomEtec.png"
         Title="Presenças - MN" Height="600" Width="900">
 
-    <Grid Background="LightGray" Margin="10">
+    <Grid Background="LightGray" Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -51,7 +52,7 @@
             </Grid>
 
             <!-- Gauges -->
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="102,0,0,0">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="83,25,0,0">
                 <!-- Gauge para Sala 1 -->
                 <lvc:Gauge From="0" To="40" Value="{Binding Sala1Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0">
                     <lvc:Gauge.GaugeActiveFill>
@@ -87,20 +88,22 @@
             </StackPanel>
 
             <!-- TextBlock placeholders -->
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,144,0,293" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
+            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="144,128,0,329" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
                 <Run Language="pt-br" Text="1°MN"/>
             </TextBlock>
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,275,0,162" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
+            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="144,259,0,198" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
                 <Run Language="pt-br" Text="2°MN"/>
             </TextBlock>
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="163,396,0,41" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
+            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="144,380,0,77" Grid.Row="0" Grid.Column="1" Width="28" Height="20">
                 <Run Text="3"/>
                 <Run Language="pt-br" Text="°"/>
                 <Run Text="MN"/>
             </TextBlock>
+
+            <!-- Back Button -->
+            <Button x:Name="btnVoltar" Content="Voltar" Width="111" HorizontalAlignment="Left" Margin="197,380,0,50" Click="btnVoltar_Click" Grid.Column="1"/>
+
         </Grid>
 
-        <!-- Back Button -->
-        <Button x:Name="btnVoltar" Content="Voltar" Width="100" Height="30" HorizontalAlignment="Left" Grid.Row="1" Margin="750,382,0,45" Click="btnVoltar_Click"/>
     </Grid>
 </Window>

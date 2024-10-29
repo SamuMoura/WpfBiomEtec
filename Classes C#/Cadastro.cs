@@ -13,12 +13,14 @@ namespace WpfBiomEtec
         private string cpf;
         private string email;
         private string telefone;
+        private int rm;
         
         public string IdBiometria { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
+        public int RM { get; set; }
 
     }
 }

@@ -36,11 +36,12 @@ namespace WpfBiomEtec
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
             CadastroAluno Alunocadastrar = new CadastroAluno(
-                    Convert.ToString(txtCPF),
-                    Convert.ToString(txtEmail),
-                    Convert.ToString(txtIDbiometria),
-                    Convert.ToString(txtNome),
-                    Convert.ToString(txtTelefone)
+                    txtCPF.Text,
+                    txtEmail.Text,
+                    txtIDbiometria.Text,
+                    txtNome.Text,
+                    txtTelefone.Text,
+                    int.Parse(txtRM.Text)
                 );
 
             InsertAlunoDAO.InserirAluno(Alunocadastrar);

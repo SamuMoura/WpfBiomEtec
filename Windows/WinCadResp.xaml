@@ -17,5 +17,6 @@
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="40" Margin="80,314,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
         <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" Height="40" Margin="80,379,0,0" TextWrapping="Wrap" Text="Telefone" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
         <Label Content="Cadastro - Responsáveis" HorizontalAlignment="Left" Height="60" Margin="80,33,0,0" VerticalAlignment="Top" Width="470" FontFamily="Arial" FontSize="40" Foreground="#FF060322"/>
+        <TextBox x:Name="txtRM" HorizontalAlignment="Left" Height="40" Margin="429,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Background="#FFD3DAF1" FontSize="20" Text="RM"/>
     </Grid>
 </Window>

@@ -9,18 +9,14 @@ namespace WpfBiomEtec
 {
     internal sealed class CadastroAluno : Cadastro
     {
-        private int rm;
 
-        public int RM { get => rm; set => rm = value; }
-
-        public CadastroAluno(string idBiometria, string nome, string cpf, string email, string telefone)
+        public CadastroAluno(string idBiometria, string nome, string cpf, string email, string telefone, int rm)
         {
             this.IdBiometria = idBiometria;
             this.Nome = nome;
             this.CPF = cpf;
             this.Email = email;
             this.Telefone = telefone;
-
             this.RM = rm;
         }
 

@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,23 +15,25 @@ namespace WpfBiomEtec
         {
             using (MySqlConnection connection = ConnectionFactory.GetConnection())
             {
-                connection.Open();
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
 
-                string comandoSQL = "INSERT INTO tab_alunos (RM, nome, biometria, email, cpf, telefone)" +
-                    "VALUES (@RM, @nome, @biometria, @email, @cpf, @telefone)";
+                string comandoSQL = @"INSERT INTO tab_alunos (RM, nome, biometria, email, cpf, telefone)
+                                      VALUES (@RM, @nome, @biometria, @email, @cpf, @telefone)";
 
-                MySqlCommand comandoINSERT = new MySqlCommand(comandoSQL, connection);
+                using (MySqlCommand comandoINSERT = new MySqlCommand(comandoSQL, connection))
+                {
+                    comandoINSERT.Parameters.AddWithValue("@RM", cadAluno.RM);
+                    comandoINSERT.Parameters.AddWithValue("@nome", cadAluno.Nome);
+                    comandoINSERT.Parameters.AddWithValue("@biometria", cadAluno.IdBiometria);
+                    comandoINSERT.Parameters.AddWithValue("@email", cadAluno.Email);
+                    comandoINSERT.Parameters.AddWithValue("@cpf", cadAluno.CPF);
+                    comandoINSERT.Parameters.AddWithValue("@telefone", cadAluno.Telefone); comandoINSERT.ExecuteNonQuery();
 
-                comandoINSERT.Parameters.AddWithValue("@nome", cadAluno.Nome);
-                comandoINSERT.Parameters.AddWithValue("@biometria", cadAluno.IdBiometria);
-                comandoINSERT.Parameters.AddWithValue("@email", cadAluno.Email);
-                comandoINSERT.Parameters.AddWithValue("@cpf", cadAluno.CPF);
-                comandoINSERT.Parameters.AddWithValue("@telefone", cadAluno.Telefone);
-                comandoINSERT.Parameters.AddWithValue("@RM", cadAluno.RM);
-
-                comandoINSERT.ExecuteNonQuery();
-
-                connection.Close();
+                    connection.Close();
+                }
             }
         }
     }

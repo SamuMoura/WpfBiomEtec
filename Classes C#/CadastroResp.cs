@@ -13,15 +13,16 @@ namespace WpfBiomEtec
 
         public string RelacionamentocAluno { get => relacionamentocAluno; set => relacionamentocAluno = value; }
 
-        public CadastroResp(string idBiometria, string nome, string cpf, string email, string telefone)
+        public CadastroResp(string idBiometria, string nome, string cpf, string email, string telefone, int rm, string relacionamentocAluno)
         {
             this.IdBiometria = idBiometria;
             this.Nome = nome;
             this.CPF = cpf;
             this.Email = email;
             this.Telefone = telefone;
+            this.RM = rm;
 
-            this.relacionamentocAluno = RelacionamentocAluno;
+            this.RelacionamentocAluno = relacionamentocAluno;
         }
 
         public CadastroResp() { }

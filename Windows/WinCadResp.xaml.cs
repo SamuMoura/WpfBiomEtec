@@ -40,7 +40,9 @@ namespace WpfBiomEtec
                 txtNome.Text,
                 txtEmail.Text, 
                 txtNome.Text,
-                txtTelefone.Text
+                txtTelefone.Text,
+                int.Parse(txtRM.Text),
+                txtRelacionamentocAluno.Text
                 );
 
             InsertRespDAO.InserirResp(Respcadastrar);

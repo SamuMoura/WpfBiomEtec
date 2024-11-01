@@ -24,7 +24,7 @@ namespace WpfBiomEtec
                     connection.Open();
                 }
 
-                string comandoSQL = @"INSERT INTO responsaveis (relacionamentoaluno, nome, biometria, email, cpf, telefone)
+                string comandoSQL = @"INSERT INTO responsaveis (relacionamentoaluno, nome, biometria, email, cpf, telefone, rm)
                                       VALUES (@relacionamentoaluno, @nome, @biometria, @email, @cpf, @telefone, @RM)";
 
                 using (MySqlCommand comandoINSERT = new MySqlCommand(comandoSQL, connection))

@@ -33,7 +33,7 @@ namespace WpfBiomEtec
                     comandoINSERT.Parameters.AddWithValue("@nome", cadResp.Nome);
                     comandoINSERT.Parameters.AddWithValue("@biometria", cadResp.IdBiometria);
                     comandoINSERT.Parameters.AddWithValue("@email", cadResp.Email);
-                    comandoINSERT.Parameters.AddWithValue("@cpf", cadResp.CPF);
+                    comandoINSERT.Parameters.AddWithValue("@cpf", cadResp.CPF.Trim());
                     comandoINSERT.Parameters.AddWithValue("@telefone", cadResp.Telefone);
                     comandoINSERT.Parameters.AddWithValue("@RM", cadResp.RM);
 

@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
         Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="BiomEtec - Login" Height="600" Width="900">
-
+        Title="BiomEtec - Login" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#060322" Offset="0"/>

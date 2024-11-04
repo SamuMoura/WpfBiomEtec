@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
         Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="Menu - BiomEtec" Height="600" Width="900">
+        Title="Menu - BiomEtec" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

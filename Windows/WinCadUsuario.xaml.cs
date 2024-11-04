@@ -22,20 +22,23 @@ namespace WpfBiomEtec
         public void LimparForm()
         {
             txtUsuario.Clear();
-            txtSenha.Clear();
+            psdSenha.Clear();
             txtPermissao.Clear();
-        }
+            txtBiometria.Clear();
+;        }
         public WinCadUsuario()
         {
             InitializeComponent();
         }
 
+
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
             CadastroUsuario Usercadastrar = new CadastroUsuario(
                 txtUsuario.Text,
-                txtSenha.Text,
-                txtPermissao.Text
+                psdSenha.Password,
+                txtPermissao.Text,
+                txtBiometria.Text
                 );
 
             InsertUsuarioDAO.InserirUsuario(Usercadastrar);

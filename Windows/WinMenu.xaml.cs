@@ -66,6 +66,13 @@ namespace WpfBiomEtec
             this.Close();
         }
 
+        private void btnPassagem_Click(object sender, RoutedEventArgs e)
+        {
+            WinPassagem winPassagem = new WinPassagem();
+            winPassagem.Show();
+            this.Close();
+        }
+
         private void lblLogoff_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();

@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -15,12 +14,9 @@ namespace WpfBiomEtec
         {
             using (MySqlConnection connection = ConnectionFactory.GetConnection())
             {
-                if (connection.State != ConnectionState.Open)
-                {
-                    connection.Open();
-                }
+                connection.Open();
 
-                string comandoSQL = @"INSERT INTO alunos (RM, nome, biometria, email, cpf, telefone)
+                string comandoSQL = @"INSERT INTO tab_alunos (RM, nome, biometria, email, cpf, telefone)
                                       VALUES (@RM, @nome, @biometria, @email, @cpf, @telefone)";
 
                 using (MySqlCommand comandoINSERT = new MySqlCommand(comandoSQL, connection))

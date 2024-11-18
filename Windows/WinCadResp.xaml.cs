@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using CpfLibrary;
 
 namespace WpfBiomEtec
 {
@@ -28,7 +27,6 @@ namespace WpfBiomEtec
             txtIDbiometria.Clear();
             txtRelacionamentocAluno.Clear();
             txtTelefone.Clear();
-            txtRM.Clear();
         }
         public WinCadResp()
         {
@@ -37,35 +35,17 @@ namespace WpfBiomEtec
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            bool cpfValido = Cpf.Check(txtCPF.Text);
+            CadastroResp Respcadastrar = new CadastroResp(
+                txtCPF.Text, 
+                txtNome.Text,
+                txtEmail.Text, 
+                txtNome.Text,
+                txtTelefone.Text
+                );
 
-            if (cpfValido == true ) {
-                try
-                {
-                    CadastroResp Respcadastrar = new CadastroResp(
-                        txtCPF.Text,
-                        txtNome.Text,
-                        txtEmail.Text,
-                        txtNome.Text,
-                        txtTelefone.Text,
-                        int.Parse(txtRM.Text),
-                        txtRelacionamentocAluno.Text
-                        );
-
-                    InsertRespDAO.InserirResp(Respcadastrar);
-                    MessageBox.Show("Responsável cadastrado com sucesso!");
-                    LimparForm();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro: {ex.Message}");
-
-                }
-            } 
-            else
-            {
-                MessageBox.Show("CPF inválido!");
-            }
+            InsertRespDAO.InserirResp(Respcadastrar);
+            MessageBox.Show("Responsável cadastrado com sucesso!");
+            LimparForm();
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)

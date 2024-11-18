@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
         Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="Cadastro - Responsáveis" Height="600" Width="900"
-        WindowStartupLocation="CenterScreen">
+        Title="Cadastro - Responsáveis" Height="600" Width="900">
     <Grid>
         <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Height="50" Margin="80,516,0,0" VerticalAlignment="Top" Width="220" Click="btnCadastrar_Click" FontSize="20" FontFamily="Arial" Background="#FF060322" BorderBrush="White" Foreground="White"/>
         <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Height="50" Margin="619,516,0,0" VerticalAlignment="Top" Width="220" Click="btnVoltar_Click" Foreground="#FF060322" BorderBrush="#FF060322" Background="#FFD3DAF1" FontSize="20" FontFamily="Arial"/>
@@ -18,6 +17,5 @@
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="40" Margin="80,314,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
         <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" Height="40" Margin="80,379,0,0" TextWrapping="Wrap" Text="Telefone" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
         <Label Content="Cadastro - Responsáveis" HorizontalAlignment="Left" Height="60" Margin="80,33,0,0" VerticalAlignment="Top" Width="470" FontFamily="Arial" FontSize="40" Foreground="#FF060322"/>
-        <TextBox x:Name="txtRM" HorizontalAlignment="Left" Height="40" Margin="429,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Background="#FFD3DAF1" FontSize="20" Text="RM"/>
     </Grid>
 </Window>

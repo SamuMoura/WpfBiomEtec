@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace WpfBiomEtec
 {
-    internal class Cadastro
+    public class Cadastro
     {
         private string idBiometria;
         private string nome;
         private string cpf;
         private string email;
         private string telefone;
-        private int rm;
         
         public string IdBiometria { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-        public int RM { get; set; }
 
     }
 }

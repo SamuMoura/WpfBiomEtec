@@ -6,21 +6,76 @@
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
         Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="BiomEtec - Login" Height="600" Width="900"
+        Title="BiomEtec - Login"
+        Height="600"
+        Width="900"
         WindowStartupLocation="CenterScreen">
+
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#060322" Offset="0"/>
-            <GradientStop Color="#204498" Offset="1"/>
+            <GradientStop Color="#060322" Offset="0" />
+            <GradientStop Color="#204498" Offset="1" />
         </LinearGradientBrush>
     </Window.Background>
 
     <Grid Background="#FFCFCFCF">
-        <Button x:Name="btnAcesso" Content="Entrar" HorizontalAlignment="Center" Height="60" Margin="0,470,0,0" VerticalAlignment="Top" Width="200" Click="btnAcesso_Click" FontSize="20" FontFamily="Arial" Foreground="White" Background="#FF060322" BorderBrush="White"/>
-        <TextBox x:Name="txtAdmin" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="380" FontSize="15" FontFamily="Arial" TextChanged="txtAdmin_TextChanged"/>
-        <PasswordBox x:Name="pwdSenha" HorizontalAlignment="Center" Height="40" VerticalAlignment="Top" Width="380" Margin="0,394,0,0" FontSize="15" />
-        <Label Content="Usuário" HorizontalAlignment="Left" Height="33" Margin="260,234,0,0" VerticalAlignment="Top" Width="83" FontSize="20" FontFamily="Arial" Foreground="#FF060322"/>
-        <Label Content="Senha" HorizontalAlignment="Left" Height="31" Margin="260,358,0,0" VerticalAlignment="Top" Width="69" FontSize="20" FontFamily="Arial" Foreground="#FF060322"/>
-        <Image HorizontalAlignment="Center" Height="65" Margin="0,112,0,0" VerticalAlignment="Top" Width="321" Source="/assets/BiomEtec.png"/>
+        <Button x:Name="btnAcesso"
+                Content="Entrar"
+                HorizontalAlignment="Center"
+                Height="60"
+                Margin="0,470,0,0"
+                VerticalAlignment="Top"
+                Width="200"
+                Click="btnAcesso_Click"
+                FontSize="20"
+                FontFamily="Arial"
+                Foreground="White"
+                Background="#FF060322"
+                BorderBrush="White" />
+
+        <TextBox x:Name="txtAdmin"
+                 HorizontalAlignment="Center"
+                 Height="40"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Center"
+                 Width="380"
+                 FontSize="15"
+                 FontFamily="Arial"
+                 TextChanged="txtAdmin_TextChanged" />
+
+        <PasswordBox x:Name="pwdSenha"
+                     HorizontalAlignment="Center"
+                     Height="40"
+                     VerticalAlignment="Top"
+                     Width="380"
+                     Margin="0,394,0,0"
+                     FontSize="15" />
+
+        <Label Content="Usuário"
+               HorizontalAlignment="Left"
+               Height="33"
+               Margin="260,234,0,0"
+               VerticalAlignment="Top"
+               Width="83"
+               FontSize="20"
+               FontFamily="Arial"
+               Foreground="#FF060322" />
+
+        <Label Content="Senha"
+               HorizontalAlignment="Left"
+               Height="31"
+               Margin="260,358,0,0"
+               VerticalAlignment="Top"
+               Width="69"
+               FontSize="20"
+               FontFamily="Arial"
+               Foreground="#FF060322" />
+
+        <Image HorizontalAlignment="Center"
+               Height="65"
+               Margin="0,112,0,0"
+               VerticalAlignment="Top"
+               Width="321"
+               Source="/assets/BiomEtec.png" />
     </Grid>
 </Window>

@@ -1,32 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace WpfBiomEtec
 {
-    internal sealed class CadastroResp : Cadastro
+    public sealed class CadastroResp : Cadastro
     {
-        private string relacionamentocAluno;
+        public string Biometria { get; set; } // Renomeado de IdBiometria para Biometria para manter consistência
+        public string RelacionamentoAluno { get; set; } // Renomeado para consistência com o restante do código
+        public int? RM { get; set; } // Propriedade adicionada para suportar RM como valor opcional
 
-        public string RelacionamentocAluno { get => relacionamentocAluno; set => relacionamentocAluno = value; }
-
-        public CadastroResp(string idBiometria, string nome, string cpf, string email, string telefone, int rm, string relacionamentocAluno)
+        public CadastroResp(string biometria, string nome, string cpf, string email, string telefone, string relacionamentoAluno, int? rm = null)
         {
-            this.IdBiometria = idBiometria;
-            this.Nome = nome;
-            this.CPF = cpf;
-            this.Email = email;
-            this.Telefone = telefone;
-            this.RM = rm;
-
-            this.RelacionamentocAluno = relacionamentocAluno;
+            Biometria = biometria;
+            Nome = nome;
+            CPF = cpf;
+            Email = email;
+            Telefone = telefone;
+            RelacionamentoAluno = relacionamentoAluno;
+            RM = rm;
         }
 
         public CadastroResp() { }
-
     }
 }
-

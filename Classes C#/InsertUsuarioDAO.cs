@@ -20,20 +20,17 @@ namespace WpfBiomEtec
                     connection.Open();
                 }
 
-                string comandoSQL = @"INSERT INTO usuario (biometria, usuario, senha, permissao)
-                                      VALUES (@biometria, @usuario, @senha, @permissao)"
+                string comandoSQL = @"INSERT INTO tab_usuario (usuario, senha, permissao)
+                                      VALUES (@usuario, @senha, @permissao)"
                 ;
 
                 using (MySqlCommand comandoINSERT = new MySqlCommand(comandoSQL, connection))
                 {
-                    comandoINSERT.Parameters.AddWithValue("@biometria", cadUsuario.Biometria);
                     comandoINSERT.Parameters.AddWithValue("@usuario", cadUsuario.Usuario);
-                    comandoINSERT.Parameters.AddWithValue("@senha", cadUsuario.Senha);
+                    comandoINSERT.Parameters.AddWithValue("@senha", cadUsuario.Senha);  // Certifique-se de usar hash para a senha
                     comandoINSERT.Parameters.AddWithValue("@permissao", cadUsuario.Permissao);
 
                     comandoINSERT.ExecuteNonQuery();
-
-                    connection.Close();
                 }
             }
         }

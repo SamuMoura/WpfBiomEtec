@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CpfLibrary;
 
 namespace WpfBiomEtec
 {
@@ -20,6 +8,14 @@ namespace WpfBiomEtec
     /// </summary>
     public partial class WinCadResp : Window
     {
+        public WinCadResp()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Limpa os campos do formulário.
+        /// </summary>
         public void LimparForm()
         {
             txtCPF.Clear();
@@ -30,41 +26,52 @@ namespace WpfBiomEtec
             txtTelefone.Clear();
             txtRM.Clear();
         }
-        public WinCadResp()
-        {
-            InitializeComponent();
-        }
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            bool cpfValido = Cpf.Check(txtCPF.Text);
-
-            if (cpfValido == true ) {
-                try
-                {
-                    CadastroResp Respcadastrar = new CadastroResp(
-                        txtCPF.Text,
-                        txtNome.Text,
-                        txtEmail.Text,
-                        txtNome.Text,
-                        txtTelefone.Text,
-                        int.Parse(txtRM.Text),
-                        txtRelacionamentocAluno.Text
-                        );
-
-                    InsertRespDAO.InserirResp(Respcadastrar);
-                    MessageBox.Show("Responsável cadastrado com sucesso!");
-                    LimparForm();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro: {ex.Message}");
-
-                }
-            } 
-            else
+            try
             {
-                MessageBox.Show("CPF inválido!");
+                // Validações básicas
+                if (string.IsNullOrWhiteSpace(txtCPF.Text) ||
+                    string.IsNullOrWhiteSpace(txtNome.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(txtIDbiometria.Text) ||
+                    string.IsNullOrWhiteSpace(txtRelacionamentocAluno.Text) ||
+                    string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                    string.IsNullOrWhiteSpace(txtRM.Text))
+                {
+                    MessageBox.Show("Por favor, preencha todos os campos!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Convertendo RM para inteiro
+                if (!int.TryParse(txtRM.Text, out int rm))
+                {
+                    MessageBox.Show("RM deve ser um número válido.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Criando o objeto CadastroResp
+                CadastroResp Respcadastrar = new CadastroResp
+                {
+                    IdBiometria = txtIDbiometria.Text,
+                    Nome = txtNome.Text,
+                    CPF = txtCPF.Text,
+                    Email = txtEmail.Text,
+                    Telefone = txtTelefone.Text,
+                    RelacionamentoAluno = txtRelacionamentocAluno.Text,
+                    RM = rm
+                };
+
+                // Inserindo no banco
+                InsertRespDAO.InserirResp(Respcadastrar);
+
+                MessageBox.Show("Responsável cadastrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                LimparForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro ao cadastrar o responsável: {ex.Message}", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

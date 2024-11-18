@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="Menu - BiomEtec" Height="600" Width="900"
-        WindowStartupLocation="CenterScreen">
+        Title="Menu - BiomEtec" Height="600" Width="900">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -24,7 +24,8 @@
         <Button x:Name="btnDS" Content="DS" HorizontalAlignment="Left" Height="47" Margin="710,311,0,0" VerticalAlignment="Top" Width="158" FontFamily="Arial" FontSize="15" Foreground="White" Background="#FF0C123E" BorderBrush="{x:Null}" Click="btnDS_Click"/>
         <Button x:Name="btnMA" Content="MA" HorizontalAlignment="Left" Height="46" Margin="710,373,0,0" VerticalAlignment="Top" Width="158" BorderBrush="{x:Null}" Foreground="White" Background="#FF0C123E" FontFamily="Arial" FontSize="15" Click="btnMA_Click"/>
         <Button x:Name="btnMN" Content="MN" HorizontalAlignment="Left" Height="47" Margin="710,433,0,0" VerticalAlignment="Top" Width="158" BorderBrush="{x:Null}" Foreground="White" Background="#FF0C123E" FontFamily="Arial" FontSize="15" Click="btnMN_Click"/>
-        <Label x:Name="lblLogoff" Content="Logoff" HorizontalAlignment="Left" Height="31" Margin="760,520,0,0" VerticalAlignment="Top" Width="60" Foreground="#FF2030A4" FontFamily="Arial" FontSize="18" MouseLeftButtonDown="lblLogoff_MouseLeftButtonDown" />
+        <Button x:Name="btnPassagem" Content="Passagem" HorizontalAlignment="Left" Height="47" Margin="710,493,0,0" VerticalAlignment="Top" Width="158" BorderBrush="{x:Null}" Foreground="White" Background="#FF0C123E" FontFamily="Arial" FontSize="15" Click="btnPassagem_Click"/>
+        <Label x:Name="lblLogoff" Content="Logoff" HorizontalAlignment="Left" Height="31" Margin="759,545,0,0" VerticalAlignment="Top" Width="60" Foreground="#FF2030A4" FontFamily="Arial" FontSize="18" MouseLeftButtonDown="lblLogoff_MouseLeftButtonDown" />
         <Rectangle HorizontalAlignment="Left" Height="443" Margin="80,80,0,0" VerticalAlignment="Top" Width="520" Fill="#FFCFCFCF" RadiusX="15" RadiusY="15" />
         <Rectangle HorizontalAlignment="Left" Height="45" Margin="80,80,0,0" VerticalAlignment="Top" Width="520" Fill="#FFD3DAF1" RadiusX="15" RadiusY="15"/>
         <Label Content="Notificações" HorizontalAlignment="Left" Height="29" Margin="275,88,0,0" VerticalAlignment="Top" Width="130" Foreground="#FF0C123E" FontSize="20" FontFamily="Arial"/>

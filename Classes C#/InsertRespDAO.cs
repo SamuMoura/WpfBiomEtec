@@ -24,18 +24,17 @@ namespace WpfBiomEtec
                     connection.Open();
                 }
 
-                string comandoSQL = @"INSERT INTO responsaveis (relacionamentoaluno, nome, biometria, email, cpf, telefone, rm)
-                                      VALUES (@relacionamentoaluno, @nome, @biometria, @email, @cpf, @telefone, @RM)";
+                string comandoSQL = @"INSERT INTO tab_responsaveis (relacionamentoaluno, nome, biometria, email, cpf, telefone)
+                                      VALUES (@relacionamentoaluno, @nome, @biometria, @email, @cpf, @telefone)";
 
                 using (MySqlCommand comandoINSERT = new MySqlCommand(comandoSQL, connection))
                 {
-                    comandoINSERT.Parameters.AddWithValue("@relacionamentoaluno", cadResp.RelacionamentocAluno);
+                    comandoINSERT.Parameters.AddWithValue("@relacionamentoaluno", cadResp.RelacionamentoAluno);
                     comandoINSERT.Parameters.AddWithValue("@nome", cadResp.Nome);
                     comandoINSERT.Parameters.AddWithValue("@biometria", cadResp.IdBiometria);
                     comandoINSERT.Parameters.AddWithValue("@email", cadResp.Email);
-                    comandoINSERT.Parameters.AddWithValue("@cpf", cadResp.CPF.Trim());
+                    comandoINSERT.Parameters.AddWithValue("@cpf", cadResp.CPF);
                     comandoINSERT.Parameters.AddWithValue("@telefone", cadResp.Telefone);
-                    comandoINSERT.Parameters.AddWithValue("@RM", cadResp.RM);
 
                     comandoINSERT.ExecuteNonQuery();
 

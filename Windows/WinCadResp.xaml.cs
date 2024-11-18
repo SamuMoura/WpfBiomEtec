@@ -24,7 +24,6 @@ namespace WpfBiomEtec
             txtIDbiometria.Clear();
             txtRelacionamentocAluno.Clear();
             txtTelefone.Clear();
-            txtRM.Clear();
         }
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)

@@ -18,7 +18,7 @@ namespace WpfBiomEtec
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
-        {
+            {
             WinMenu winMenu = new WinMenu();
             winMenu.Show();
             this.Close();
@@ -28,6 +28,9 @@ namespace WpfBiomEtec
         {
             if (dgCadastroResp.SelectedItem is CadastroResp selecionado)
             {
+                // Preencher os campos de edição
+                txtIdBiometria.Text = selecionado.IdBiometria;
+                txtNome.Text = selecionado.Nome;
                 txtCPF.Text = selecionado.CPF;
                 txtNome.Text = selecionado.Nome;
                 txtEmail.Text = selecionado.Email;
@@ -74,7 +77,9 @@ namespace WpfBiomEtec
         {
             if (dgCadastroResp.SelectedItem is CadastroResp selecionado)
             {
+                // Atualizar objeto selecionado
                 selecionado.Nome = txtNome.Text;
+                selecionado.CPF = txtCPF.Text;
                 selecionado.Email = txtEmail.Text;
                 selecionado.Telefone = txtTelefone.Text;
                 selecionado.Biometria = txtBiometria.Text;
@@ -121,7 +126,7 @@ namespace WpfBiomEtec
                 {
                     ListaCadastro.Remove(selecionado);
                     ExcluirDoBanco(selecionado.CPF);
-                    dgCadastroResp.Items.Refresh();
+                dgCadastroResp.Items.Refresh();
                     MessageBox.Show("Registro excluído!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -134,11 +139,11 @@ namespace WpfBiomEtec
                 if (connection.State != ConnectionState.Open)
                 {
                     connection.Open();
-                }
+            }
 
                 var query = "DELETE FROM responsaveis WHERE CPF=@CPF";
                 using (var command = new MySqlCommand(query, connection))
-                {
+            {
                     command.Parameters.AddWithValue("@CPF", cpf);
                     command.ExecuteNonQuery();
                 }
@@ -147,10 +152,12 @@ namespace WpfBiomEtec
 
         private void BtnNovoRegistro_Click(object sender, RoutedEventArgs e)
         {
+            // Criar novo registro
             var novoCadastro = new CadastroResp
             {
                 CPF = txtCPF.Text,
                 Nome = txtNome.Text,
+                CPF = txtCPF.Text,
                 Email = txtEmail.Text,
                 Telefone = txtTelefone.Text,
                 Biometria = txtBiometria.Text,

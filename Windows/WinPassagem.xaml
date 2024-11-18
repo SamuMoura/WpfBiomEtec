@@ -16,6 +16,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="CPF" Binding="{Binding CPF}" Width="150" />
                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="200" />
+                <DataGridTextColumn Header="CPF" Binding="{Binding CPF}" Width="120" />
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200" />
                 <DataGridTextColumn Header="Telefone" Binding="{Binding Telefone}" Width="150" />
                 <DataGridTextColumn Header="Biometria" Binding="{Binding Biometria}" Width="300" />

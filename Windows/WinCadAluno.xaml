@@ -3,19 +3,70 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
         Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="Cadastro - Aluno" Height="600" Width="900">
+        Title="Cadastro - Aluno" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:WpfBiomEtec"
+        xmlns:viewmodels="clr-namespace:WpfBiomEtec.ViewModels">
+
+    <Window.DataContext>
+        <viewmodels:WinCadAlunoViewModel />
+    </Window.DataContext>
+
     <Grid>
-        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Height="50" Margin="80,516,0,0" VerticalAlignment="Top" Width="220" Click="btnCadastrar_Click" FontSize="20" FontFamily="Arial" Background="#FF060322" BorderBrush="White" Foreground="White"/>
-        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Height="50" Margin="619,516,0,0" VerticalAlignment="Top" Width="220" Click="btnVoltar_Click" Foreground="#FF060322" BorderBrush="#FF060322" Background="#FFD3DAF1" FontSize="20" FontFamily="Arial"/>
-        <TextBox x:Name="txtRM" HorizontalAlignment="Left" Height="40" Margin="80,119,0,0" TextWrapping="Wrap" Text="RM" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtIDbiometria" HorizontalAlignment="Left" Height="40" Margin="80,184,0,0" TextWrapping="Wrap" Text="ID Biometria" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="40" Margin="80,249,0,0" TextWrapping="Wrap" Text="Nome" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtCPF" HorizontalAlignment="Left" Height="40" Margin="80,314,0,0" TextWrapping="Wrap" Text="CPF" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="40" Margin="80,379,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" Height="40" Margin="80,444,0,0" TextWrapping="Wrap" Text="Telefone" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <Label Content="Cadastro - Alunos" HorizontalAlignment="Left" Height="59" Margin="80,34,0,0" VerticalAlignment="Top" Width="402" FontFamily="Arial" FontSize="40" Foreground="#FF060322" RenderTransformOrigin="0.493,-0.037"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Cadastro de Aluno" FontSize="30" FontWeight="Bold" Foreground="#FF060322" />
+        </StackPanel>
+
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,39,0,0">
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Nome:" FontSize="16" Foreground="Black"/>
+                <TextBox Text="{Binding Nome}" HorizontalAlignment="Left" Height="40" Width="200" Background="#FFD3DAF1" FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="CPF:" FontSize="16" Foreground="Black"/>
+                <TextBox Text="{Binding CPF}" HorizontalAlignment="Left" Height="40" Width="200" Background="#FFD3DAF1" FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Id Biometria:" FontSize="16" Foreground="Black"/>
+                <TextBox Text="{Binding IdBiometria}" HorizontalAlignment="Left" Height="40" Width="200" Background="#FFD3DAF1" FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Email:" FontSize="16" Foreground="Black"/>
+                <TextBox Text="{Binding Email}" HorizontalAlignment="Left" Height="40" Width="200" Background="#FFD3DAF1" FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Telefone:" FontSize="16" Foreground="Black"/>
+                <TextBox Text="{Binding Telefone}" HorizontalAlignment="Left" Height="40" Width="200" Background="#FFD3DAF1" FontSize="16"/>
+            </StackPanel>
+        </WrapPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,10">
+            <Button Command="{Binding SalvarCommand}" Content="Salvar" HorizontalAlignment="Left" Height="50" Width="220" FontSize="20" Background="#FF060322" BorderBrush="White" Foreground="White" Margin="10"/>
+            <Button Command="{Binding ExcluirCommand}" Content="Excluir" HorizontalAlignment="Left" Height="50" Width="220" FontSize="20" Background="#FF060322" BorderBrush="White" Foreground="White" Margin="10"/>
+            <Button Command="{Binding VoltarCommand}" Content="Voltar" HorizontalAlignment="Left" Height="50" Width="220" FontSize="20" Background="#FFD3DAF1" BorderBrush="#FF060322" Foreground="#FF060322" Margin="10"/>
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding Alunos}" 
+                  SelectedItem="{Binding AlunoSelecionado}" 
+                  AutoGenerateColumns="True" 
+                  HorizontalAlignment="Center" 
+                  Margin="0,263,0,10" 
+                  Grid.Row="1" />
     </Grid>
 </Window>

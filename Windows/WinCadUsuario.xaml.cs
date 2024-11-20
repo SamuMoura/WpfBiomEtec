@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,44 +11,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace WpfBiomEtec
 {
     /// <summary>
-    /// Lógica interna para WinCadUsuario.xaml
+    /// Interação lógica para WinCadUsuario.xaml
     /// </summary>
     public partial class WinCadUsuario : Window
     {
-        public void LimparForm()
-        {
-            txtUsuario.Clear();
-            txtSenha.Clear();
-            txtPermissao.Clear();
-        }
+
         public WinCadUsuario()
         {
             InitializeComponent();
         }
 
-        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
-        {
-            CadastroUsuario Usercadastrar = new CadastroUsuario(
-                txtUsuario.Text,
-                txtSenha.Text,
-                txtPermissao.Text
-                );
-
-            InsertUsuarioDAO.InserirUsuario(Usercadastrar);
-            MessageBox.Show("Responsável cadastrado com sucesso!");
-            LimparForm();
-        }
-
-        private void btnVoltar_Click(object sender, RoutedEventArgs e)
-        {
-            WinMenu winMenu = new WinMenu();
-            winMenu.Show();
-            this.Close();
-        }
     }
 }

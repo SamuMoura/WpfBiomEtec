@@ -1,139 +1,88 @@
-﻿<Window x:Class="WpfBiomEtec.WinMA"
+﻿<Window x:Class="WpfBiomEtec.Views.WinMA"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        xmlns:local="clr-namespace:WpfBiomEtec"
-        mc:Ignorable="d"
-        Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="Presenças - MA" Height="600" Width="900">
+        Title="Presenças - MA" 
+        Icon="/assets/Fiveicon - BiomEtec.png" 
+        Height="600" 
+        Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="LightGray"
+        xmlns:viewmodels="clr-namespace:WpfBiomEtec.ViewModels">
 
-    <Grid Background="LightGray" Margin="0,0,0,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <Window.DataContext>
+        <viewmodels:WinMAViewModel />
+    </Window.DataContext>
 
-        <!-- Title -->
-        <TextBlock Text="Presença - MA"
-                   FontSize="50" HorizontalAlignment="Center"
-                   Margin="0,20,0,375" 
-                   Grid.Row="0" />
+    <Grid Background="LightGray">
+        <!-- Título -->
+        <TextBlock Text="Presenças - MA" FontSize="30" FontWeight="Bold" Foreground="#2C2C4A"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" />
 
-        <!-- Content -->
-        <Grid Margin="21,87,21,20" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- Doughnut Chart -->
-            <Grid Margin="54,45,147,65">
-                <lvc:PieChart 
-                    Name="Doughnut"
-                    Grid.Row="1"
-                    Series="{Binding Dados}"
-                    LegendLocation="Right"
-                    InnerRadius="70"
-                    Margin="0 15"
-                    DataClick="PieChart_DataClick">
-
-                    <lvc:PieChart.ChartLegend>
-                        <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
-                    </lvc:PieChart.ChartLegend>
-
-                    <lvc:PieChart.DataTooltip>
-                        <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
-                    </lvc:PieChart.DataTooltip>
-
-                </lvc:PieChart>
-            </Grid>
-
-            <!-- Gauges -->
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="450,25,0,0" Grid.ColumnSpan="2">
-                
-                <!-- Gauge para Sala 1 -->
-                <lvc:Gauge From="0" To="40" Value="{Binding Sala1Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125">
-                    <lvc:Gauge.GaugeActiveFill>
-                        <LinearGradientBrush>
-                            <GradientStop Color="LightBlue" Offset="0.0" />
-                            <GradientStop Color="Blue" Offset="0.5" />
-                            <GradientStop Color="DarkBlue" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </lvc:Gauge.GaugeActiveFill>
-                </lvc:Gauge>
-
-                <!-- Gauge para Sala 2 -->
-                <lvc:Gauge From="0" To="40" Value="{Binding Sala2Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0">
-                    <lvc:Gauge.GaugeActiveFill>
-                        <LinearGradientBrush>
-                            <GradientStop Color="LightBlue" Offset="0.0" />
-                            <GradientStop Color="Blue" Offset="0.5" />
-                            <GradientStop Color="DarkBlue" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </lvc:Gauge.GaugeActiveFill>
-                </lvc:Gauge>
-
-                <!-- Gauge para Sala 3 -->
-                <lvc:Gauge From="0" To="40" Value="{Binding Sala3Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125">
-                    <lvc:Gauge.GaugeActiveFill>
-                        <LinearGradientBrush>
-                            <GradientStop Color="LightBlue" Offset="0.0" />
-                            <GradientStop Color="Blue" Offset="0.5" />
-                            <GradientStop Color="DarkBlue" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </lvc:Gauge.GaugeActiveFill>
-                </lvc:Gauge>
-            </StackPanel>
-
-            <!-- TextBlock placeholders -->
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="508,130,0,332" Grid.Row="0" Width="35" Grid.ColumnSpan="2"><Run Text="1°"/><Run Language="pt-br" Text="MA"/><Run Text="A"/></TextBlock>
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="508,260,0,203" Grid.Row="0" Width="35" Grid.ColumnSpan="2"><Run Text="2°"/><Run Language="pt-br" Text="MA"/><Run Text="A"/></TextBlock>
-            <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="506,380,0,83" Grid.Row="0" Width="39" Grid.ColumnSpan="2"><Run Text="3"/><Run Text=" "/><Run Text="°"/><Run Text=" "/><Run Language="pt-br" Text="MA"/><Run Text="A"/></TextBlock>
-            
-            
+        <!-- Gráfico Doughnut -->
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+            <lvc:PieChart Series="{Binding Dados}" LegendLocation="None" InnerRadius="70"
+                          Width="250" Height="250" />
         </Grid>
 
-        <!-- Back Button -->
-        <Button x:Name="btnVoltar" Content="Voltar" Width="112" HorizontalAlignment="Left" Grid.Row="1" Margin="588,42,0,20" Click="btnVoltar_Click"/>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="680,111,0,0" Grid.RowSpan="2">
-            <!-- Gauge para Sala 4 -->
-            <lvc:Gauge From="0" To="40" Value="{Binding Sala4Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0">
-                <lvc:Gauge.GaugeActiveFill>
-                    <LinearGradientBrush>
-                        <GradientStop Color="LightBlue" Offset="0.0" />
-                        <GradientStop Color="Blue" Offset="0.5" />
-                        <GradientStop Color="DarkBlue" Offset="1.0" />
-                    </LinearGradientBrush>
-                </lvc:Gauge.GaugeActiveFill>
-            </lvc:Gauge>
+        <!-- Gauges -->
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,50,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-            <!-- Gauge para Sala 5 -->
-            <lvc:Gauge From="0" To="40" Value="{Binding Sala5Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125" Margin="0,0,0,0">
-                <lvc:Gauge.GaugeActiveFill>
-                    <LinearGradientBrush>
-                        <GradientStop Color="LightBlue" Offset="0.0" />
-                        <GradientStop Color="Blue" Offset="0.5" />
-                        <GradientStop Color="DarkBlue" Offset="1.0" />
-                    </LinearGradientBrush>
-                </lvc:Gauge.GaugeActiveFill>
-            </lvc:Gauge>
+            <!-- Gauge 1 -->
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+                <lvc:Gauge From="0" To="40" Value="{Binding Sala1Presenca}" Width="100" Height="100"
+                           StrokeThickness="5" />
+                <TextBlock Text="1MAA" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
 
-            <!-- Gauge para Sala 6 -->
-            <lvc:Gauge From="0" To="40" Value="{Binding Sala6Presenca}" LabelsVisibility="Collapsed" Width="150" Height="125">
-                <lvc:Gauge.GaugeActiveFill>
-                    <LinearGradientBrush>
-                        <GradientStop Color="LightBlue" Offset="0.0" />
-                        <GradientStop Color="Blue" Offset="0.5" />
-                        <GradientStop Color="DarkBlue" Offset="1.0" />
-                    </LinearGradientBrush>
-                </lvc:Gauge.GaugeActiveFill>
-            </lvc:Gauge>
-        </StackPanel>
-        <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="738,215,0,231" Grid.Row="0" Width="34"><Run Text="1°"/><Run Language="pt-br" Text="MA"/><Run Text="B"/></TextBlock>
-        <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="739,347,0,100" Grid.Row="0" Width="32"><Run Text="2°"/><Run Language="pt-br" Text="MA"/><Run Text="B"/></TextBlock>
-        <TextBlock FontSize="10" HorizontalAlignment="Left" Margin="736,6,0,103" Grid.Row="1" Width="37"><Run Text="3"/><Run Text=" "/><Run Text="°"/><Run Text=" "/><Run Language="pt-br" Text="MA"/><Run Text="B"/></TextBlock>
+            <!-- Gauge 2 -->
+            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                <lvc:Gauge From="0" To="40" Value="{Binding Sala2Presenca}" Width="100" Height="100"
+                           StrokeThickness="5" />
+                <TextBlock Text="1MAB" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Gauge 3 -->
+            <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
+                <lvc:Gauge From="0" To="40" Value="{Binding Sala3Presenca}" Width="100" Height="100"
+                           StrokeThickness="5" />
+                <TextBlock Text="2MAA" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Gauge 4 -->
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                <lvc:Gauge From="0" To="40" Value="{Binding Sala4Presenca}" Width="100" Height="100"
+                           StrokeThickness="5" />
+                <TextBlock Text="2MAB" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Gauge 5 -->
+            <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
+                <lvc:Gauge From="0" To="40" Value="{Binding Sala5Presenca}" Width="100" Height="100"
+                           StrokeThickness="5" />
+                <TextBlock Text="3MAA" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Gauge 6 -->
+            <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
+                <lvc:Gauge From="0" To="40" Value="{Binding Sala6Presenca}" Width="100" Height="100"
+                           StrokeThickness="5" />
+                <TextBlock Text="3MAB" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Botão Voltar -->
+        <Button Content="Voltar" Width="100" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                Margin="0,0,0,20" Background="#EBEFF5" BorderBrush="#2C2C4A" Foreground="#2C2C4A"
+                FontWeight="SemiBold" Command="{Binding VoltarCommand}" />
     </Grid>
 </Window>

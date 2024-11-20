@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace WpfBiomEtec
+
+namespace WpfBiomEtec.Models
 {
-    internal sealed class CadastroAluno : Cadastro
+    public sealed class CadastroAluno : Cadastro
     {
         private int rm;
 

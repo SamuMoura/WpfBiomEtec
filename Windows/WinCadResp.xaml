@@ -3,20 +3,175 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
         Icon="/assets/Fiveicon - BiomEtec.png"
-        Title="Cadastro - Responsáveis" Height="600" Width="900">
+        Title="Cadastro - Responsáveis" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:WpfBiomEtec"
+        xmlns:viewmodels="clr-namespace:WpfBiomEtec.ViewModels">
+
+    <Window.DataContext>
+        <viewmodels:WinCadRespViewModel />
+    </Window.DataContext>
+
     <Grid>
-        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Height="50" Margin="80,516,0,0" VerticalAlignment="Top" Width="220" Click="btnCadastrar_Click" FontSize="20" FontFamily="Arial" Background="#FF060322" BorderBrush="White" Foreground="White"/>
-        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Height="50" Margin="619,516,0,0" VerticalAlignment="Top" Width="220" Click="btnVoltar_Click" Foreground="#FF060322" BorderBrush="#FF060322" Background="#FFD3DAF1" FontSize="20" FontFamily="Arial"/>
-        <TextBox x:Name="txtRelacionamentocAluno" HorizontalAlignment="Left" Height="40" Margin="80,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20" Text="Relacionamento c/ Aluno"/>
-        <TextBox x:Name="txtIDbiometria" HorizontalAlignment="Left" Height="40" Margin="80,119,0,0" TextWrapping="Wrap" Text="ID Biometria" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20" Foreground="#FF060322" FontFamily="Arial"/>
-        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="40" Margin="80,184,0,0" TextWrapping="Wrap" Text="Nome" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtCPF" HorizontalAlignment="Left" Height="40" Margin="80,249,0,0" TextWrapping="Wrap" Text="CPF" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="40" Margin="80,314,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" Height="40" Margin="80,379,0,0" TextWrapping="Wrap" Text="Telefone" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20"/>
-        <Label Content="Cadastro - Responsáveis" HorizontalAlignment="Left" Height="60" Margin="80,33,0,0" VerticalAlignment="Top" Width="470" FontFamily="Arial" FontSize="40" Foreground="#FF060322"/>
-        <TextBox x:Name="txtRM" HorizontalAlignment="Left" Height="40" Margin="423,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="#FFD3DAF1" FontSize="20" Text="RM"/>
+        <!-- Layout com 2 colunas, uma para os campos de entrada e outra para o DataGrid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Cabeçalho -->
+            <RowDefinition Height="*"/>
+            <!-- Campos de entrada -->
+            <RowDefinition Height="*" />
+            <!-- DataGrid -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Cabeçalho -->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Cadastro de Responsáveis" FontSize="30" FontWeight="Bold" Foreground="#FF060322" />
+        </StackPanel>
+
+        <!-- Campos de entrada (TextBox) para os dados do responsável -->
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Relacionamento com Aluno:" FontSize="16" Foreground="Black"/>
+                <TextBox x:Name="txtRelacionamentoAluno" 
+                         Text="{Binding RelacionamentoAluno}" 
+                         HorizontalAlignment="Left" 
+                         Height="40" 
+                         Width="200" 
+                         Background="#FFD3DAF1" 
+                         FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Nome:" FontSize="16" Foreground="Black"/>
+                <TextBox x:Name="txtNome" 
+                         Text="{Binding Nome}" 
+                         HorizontalAlignment="Left" 
+                         Height="40" 
+                         Width="200" 
+                         Background="#FFD3DAF1" 
+                         FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="CPF:" FontSize="16" Foreground="Black"/>
+                <TextBox x:Name="txtCPF" 
+                         Text="{Binding CPF}" 
+                         HorizontalAlignment="Left" 
+                         Height="40" 
+                         Width="200" 
+                         Background="#FFD3DAF1" 
+                         FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Email:" FontSize="16" Foreground="Black"/>
+                <TextBox x:Name="txtEmail" 
+                         Text="{Binding Email}" 
+                         HorizontalAlignment="Left" 
+                         Height="40" 
+                         Width="200" 
+                         Background="#FFD3DAF1" 
+                         FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Telefone:" FontSize="16" Foreground="Black"/>
+                <TextBox x:Name="txtTelefone" 
+                         Text="{Binding Telefone}" 
+                         HorizontalAlignment="Left" 
+                         Height="40" 
+                         Width="200" 
+                         Background="#FFD3DAF1" 
+                         FontSize="16"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="RM (Aluno Dependente):" FontSize="16" Foreground="Black"/>
+                <TextBox x:Name="txtRM" 
+                         Text="{Binding RM}" 
+                         HorizontalAlignment="Left" 
+                         Height="40" 
+                         Width="200" 
+                         Background="#FFD3DAF1" 
+                         FontSize="16"/>
+            </StackPanel>
+        </WrapPanel>
+
+        <!-- Botões -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,187,0,0">
+            <Button Command="{Binding SalvarCommand}" 
+                    Content="Salvar" 
+                    HorizontalAlignment="Left" 
+                    Height="50" 
+                    Width="220" 
+                    FontSize="20" 
+                    Background="#FF060322" 
+                    BorderBrush="White" 
+                    Foreground="White" 
+                    Margin="10"/>
+            <Button Command="{Binding ExcluirCommand}" 
+                    Content="Excluir" 
+                    HorizontalAlignment="Left" 
+                    Height="50" 
+                    Width="220" 
+                    FontSize="20" 
+                    Background="#FF060322" 
+                    BorderBrush="White" 
+                    Foreground="White" 
+                    Margin="10"/>
+            <Button Command="{Binding VoltarCommand}" 
+                    Content="Voltar" 
+                    HorizontalAlignment="Left" 
+                    Height="50" 
+                    Width="220" 
+                    FontSize="20" 
+                    Background="#FFD3DAF1" 
+                    BorderBrush="#FF060322" 
+                    Foreground="#FF060322" 
+                    Margin="10"/>
+        </StackPanel>
+
+        <!-- DataGrid para exibir responsáveis -->
+        <DataGrid ItemsSource="{Binding Responsaveis}" 
+                  SelectedItem="{Binding UsuarioSelecionado}" 
+                  AutoGenerateColumns="False" 
+                  Margin="80,249,80,98" Grid.RowSpan="2" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nome" 
+                                    Binding="{Binding Nome}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="CPF" 
+                                    Binding="{Binding CPF}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="Email" 
+                                    Binding="{Binding Email}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="Telefone" 
+                                    Binding="{Binding Telefone}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="RM" 
+                                    Binding="{Binding RM}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="Relacionamento c/ Aluno" 
+                                    Binding="{Binding RelacionamentoAluno}" 
+                                    Width="*"/>
+                <DataGridTemplateColumn Header="Excluir">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding DataContext.ExcluirCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                    CommandParameter="{Binding}">
+                                Excluir
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

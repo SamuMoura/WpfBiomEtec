@@ -3,13 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfBiomEtec"
         mc:Ignorable="d"
         Icon="/assets/Fiveicon - BiomEtec.png"
         Title="BiomEtec - Login"
         Height="600"
         Width="900"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:WpfBiomEtec"
+        xmlns:viewmodels="clr-namespace:WpfBiomEtec.ViewModels"
+        >
+
+    <Window.DataContext>
+        <viewmodels:MainWindowViewModel />
+    </Window.DataContext>
+
 
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -19,37 +26,37 @@
     </Window.Background>
 
     <Grid Background="#FFCFCFCF">
-        <Button x:Name="btnAcesso"
-                Content="Entrar"
+        <Button Content="Entrar"
                 HorizontalAlignment="Center"
                 Height="60"
                 Margin="0,470,0,0"
                 VerticalAlignment="Top"
                 Width="200"
-                Click="btnAcesso_Click"
                 FontSize="20"
                 FontFamily="Arial"
                 Foreground="White"
                 Background="#FF060322"
-                BorderBrush="White" />
+                BorderBrush="White"
+                Command="{Binding LoginCommand}" />
 
-        <TextBox x:Name="txtAdmin"
-                 HorizontalAlignment="Center"
+        <TextBox HorizontalAlignment="Center"
                  Height="40"
                  TextWrapping="Wrap"
                  VerticalAlignment="Center"
                  Width="380"
                  FontSize="15"
                  FontFamily="Arial"
-                 TextChanged="txtAdmin_TextChanged" />
+                 Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
 
-        <PasswordBox x:Name="pwdSenha"
-                     HorizontalAlignment="Center"
-                     Height="40"
-                     VerticalAlignment="Top"
-                     Width="380"
-                     Margin="0,394,0,0"
-                     FontSize="15" />
+        <PasswordBox HorizontalAlignment="Center"
+             Height="40"
+             VerticalAlignment="Top"
+             Width="380"
+             Margin="0,394,0,0"
+             FontSize="15"
+             local:PasswordBoxBindingBehavior.Attach="True"
+             local:PasswordBoxBindingBehavior.Password="{Binding Password, Mode=TwoWay}" />
+
 
         <Label Content="Usuário"
                HorizontalAlignment="Left"

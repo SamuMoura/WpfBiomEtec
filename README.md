@@ -1,6 +1,6 @@
 # BiomEtec
+<img src="https://github.com/SamuMoura/WpfBiomEtec/blob/master/assets/Fiveicon%20-%20BiomEtec.png" alt="Logo - BiomEtec" width="500" height="500">
 
-![Logo - BiomEtec](https://github.com/SamuMoura/WpfBiomEtec/blob/master/assets/Fiveicon%20-%20BiomEtec.png)
 Projeto desenvolvido como "Mini" Trabalho de Conclusão de Curso ("Mini" TCC) no componente **Banco de Dados II** em conjunto ao componete de **Desenvolvimento de Sistemas** do curso Técnico em Desenvolvimento de Sistemas, do **Ensino Médio Integrado ao Técnico**, na **ETEC de Hortolândia**, sob orientação da Professora **Priscila Batista Martins**.
 ## Sumário
 - [Documentação](#documentação)
